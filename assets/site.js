@@ -121,6 +121,7 @@
       e.preventDefault();
       var out = document.getElementById('pipeResult');
       out.hidden = false;
+      out.style.display = 'block';
       out.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   }
