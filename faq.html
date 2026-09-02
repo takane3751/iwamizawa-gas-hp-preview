@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>よくあるご質問｜岩見沢ガス株式会社</title>
+<meta name="description" content="引越し時の手続き、ガスの臭い、料金の支払い、機器の修理、停電時のガス利用など、よくあるご質問にお答えします。">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="faq">
+
+<!-- ===== 緊急時アラート（通常時は非表示。緊急表示モードでのみ出る） ===== -->
+<div class="alert-bar" id="alertBar" role="alert" hidden>
+  <div class="wrap alert-bar__inner">
+    <span class="alert-bar__label">⚠ 緊急情報</span>
+    <span class="alert-bar__text" id="alertText">地震の影響により一部地域でガスの供給を停止しています。復旧状況は災害・緊急時ページをご確認ください。</span>
+    <a class="alert-bar__link" href="emergency.html">供給状況・復帰手順を見る →</a>
+  </div>
+</div>
+
+<!-- ===== ユーティリティバー ===== -->
+<div class="utilbar">
+  <div class="wrap utilbar__inner">
+    <div class="utilbar__left">
+      <span class="utilbar__tag">ガスもれ・緊急時（24時間）</span>
+      <a class="utilbar__tel js-tel" href="tel:0000000000">TEL <mark class="ph">0000-00-0000</mark></a>
+    </div>
+    <div class="utilbar__right">
+      <span>受付時間 平日 8:30–17:30</span>
+      <a href="contact.html">お問い合わせ</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ヘッダー ===== -->
+<header class="header" id="header">
+  <div class="wrap header__inner">
+    <a class="brand" href="index.html">
+      <img class="brand__mark" src="assets/img/logo.svg" alt="" width="36" height="36">
+      <span class="brand__name">岩見沢ガス<span class="brand__sub">株式会社</span></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="メインメニュー">
+      <ul class="nav__list">
+        <li><a data-nav="news" href="news.html">お知らせ</a></li>
+        <li><a data-nav="service" href="service.html">事業案内</a></li>
+        <li><a data-nav="emergency" class="nav__emergency" href="emergency.html">災害・安全</a></li>
+        <li><a data-nav="price" href="price.html">ガス料金</a></li>
+        <li><a data-nav="faq" href="faq.html">Q&amp;A</a></li>
+        <li><a data-nav="community" href="community.html">地域貢献</a></li>
+        <li><a data-nav="company" href="company.html">会社案内</a></li>
+        <li class="nav__cta"><a data-nav="contact" class="btn btn--amber btn--sm" href="contact.html">お問い合わせ</a></li>
+      </ul>
+      <div class="nav__mobile-extra">
+        <a class="btn btn--red btn--block js-tel" href="tel:0000000000">📞 ガスもれ・緊急（24時間）<br><small>0000-00-0000</small></a>
+        <a class="btn btn--outline btn--block" href="emergency.html">災害・緊急時の対応を見る</a>
+      </div>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-controls="nav" aria-expanded="false" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+<div class="page-head">
+  <div class="wrap">
+    <ol class="breadcrumb"><li><a href="index.html">ホーム</a></li><li>よくあるご質問</li></ol>
+    <span class="eyebrow">FAQ</span>
+    <h1 class="h1">よくあるご質問</h1>
+    <p class="lead">お問い合わせの多いご質問をまとめました。解決しない場合はお気軽にご連絡ください。</p>
+  </div>
+</div>
+
+<section class="section section--tight">
+  <div class="wrap" style="max-width:860px">
+    <h2 class="h3" style="margin-bottom:.8em">お手続き・料金</h2>
+    <div class="faq">
+      <details open>
+        <summary>引越しのとき、ガスの開始・停止はどうすればいいですか？</summary>
+        <div class="ans">お電話または <a href="price.html#apply">予約フォーム</a> から、ご希望日の4営業日前までにご連絡ください。開栓時は安全点検のため立ち会いをお願いしています。</div>
+      </details>
+      <details>
+        <summary>料金の支払い方法にはどんな種類がありますか？</summary>
+        <div class="ans">口座振替、クレジットカード、コンビニ・金融機関での払込票払いをご利用いただけます。詳しくは <a href="price.html#terms">ガス料金について</a> をご覧ください。</div>
+      </details>
+      <details>
+        <summary>毎月の料金が変わるのはなぜですか？</summary>
+        <div class="ans">原料費調整制度により、ガスの原料価格の変動が従量単価に反映されるためです。当月の調整単価は毎月 <a href="news.html">お知らせ</a> に掲載しています。</div>
+      </details>
+      <details>
+        <summary>検針票の見方を教えてください</summary>
+        <div class="ans">「今回指示数」から「前回指示数」を引いた値が当月のご使用量（㎥）です。検針期間は毎月 <a href="news.html">お知らせ</a> に掲載します。<mark class="ph">検針票の画像つき解説を追加予定</mark></div>
+      </details>
+    </div>
+
+    <h2 class="h3 mt-3" style="margin-bottom:.8em">安全・緊急時</h2>
+    <div class="faq">
+      <details>
+        <summary>ガスの臭いがするときはどうすればいいですか？</summary>
+        <div class="ans">火気を使わず、換気扇や電気スイッチにも触れずに窓を開け、元栓を閉めてから屋外より <a class="js-tel" href="tel:0000000000">緊急連絡先（24時間）</a> へご連絡ください。詳しくは <a href="emergency.html">災害・緊急時の案内</a> をご覧ください。</div>
+      </details>
+      <details>
+        <summary>ガスメーターの赤いランプが点滅してガスが出ません</summary>
+        <div class="ans">マイコンメーターの安全装置が作動しています。すべてのガス機器を止め、復帰ボタンを押して約3分お待ちください。<a href="emergency.html#recover">図解・動画つきの復帰手順</a> をご覧ください。点滅が続く場合はご連絡ください。</div>
+      </details>
+      <details>
+        <summary>停電したときガスは使えますか？</summary>
+        <div class="ans">電池式のガスコンロは使えます。給湯器・ファンヒーター・床暖房など電気を使う機器は停電中は使えません。復電後、取扱説明書に従って再運転してください。</div>
+      </details>
+      <details>
+        <summary>冬に給湯器が凍結しそうなときは？</summary>
+        <div class="ans">給湯器には凍結防止ヒーターがついていますが、停電時は働きません。長時間の停電や外出時は、取扱説明書の手順で水抜きをするか、少量の水を流し続けてください。<mark class="ph">機種別の手順PDFを追加予定</mark></div>
+      </details>
+    </div>
+
+    <h2 class="h3 mt-3" style="margin-bottom:.8em">機器・工事</h2>
+    <div class="faq">
+      <details>
+        <summary>ガス機器の点検や修理もお願いできますか？</summary>
+        <div class="ans">はい。コンロ・給湯器・暖房機など、メーカーを問わず点検・修理・交換を承ります。<a href="contact.html">お問い合わせ</a> からご相談ください。</div>
+      </details>
+      <details>
+        <summary>定期保安点検の訪問を受けました。本物ですか？</summary>
+        <div class="ans">当社の点検員は身分証を携帯し、訪問前にお知らせをお届けしています。ご不安な場合は、その場で当社 <a class="js-tel" href="tel:0000000000">0000-00-0000</a> にご確認ください。点検は無料で、機器の販売を強要することはありません。</div>
+      </details>
+      <details>
+        <summary>道路工事でガス管の位置を確認したい（工事業者）</summary>
+        <div class="ans">当社発行のIDで <a href="service-pipe.html">埋設管照会システム</a> をご利用いただけます。初回はお申し込みが必要です。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section cta">
+  <div class="wrap">
+    <h2 class="h2">解決しないときは</h2>
+    <p>お電話・フォームでお気軽にお問い合わせください。</p>
+    <div class="actions">
+      <a class="btn btn--amber btn--lg" href="contact.html">お問い合わせ</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== フッター ===== -->
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <div class="footer__col footer__brand">
+      <div class="brand brand--footer">
+        <img class="brand__mark" src="assets/img/logo.svg" alt="" width="32" height="32">
+        <span class="brand__name">岩見沢ガス株式会社</span>
+      </div>
+      <p class="footer__addr"><mark class="ph">〒000-0000 北海道岩見沢市○○町0-0</mark></p>
+      <p class="footer__tel">TEL <a class="js-tel" href="tel:0000000000"><mark class="ph">0000-00-0000</mark></a>　受付 平日 8:30–17:30</p>
+      <p class="footer__tel footer__tel--em">ガスもれ・緊急（24時間）<a class="js-tel" href="tel:0000000000"><mark class="ph">0000-00-0000</mark></a></p>
+      <div class="sns">
+        <a href="#" aria-label="Instagram" title="Instagram（要リンク設定）"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="YouTube" title="YouTube（要リンク設定）"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="X" title="X（要リンク設定）"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4l16 16M20 4L4 20"/></svg></a>
+      </div>
+    </div>
+    <div class="footer__col">
+      <h3 class="footer__h">サイト内メニュー</h3>
+      <ul class="footer__links">
+        <li><a href="news.html">お知らせ・新着情報</a></li>
+        <li><a href="service.html">事業案内</a></li>
+        <li><a href="emergency.html">災害・緊急時の案内</a></li>
+        <li><a href="price.html">ガス料金・開栓/閉栓</a></li>
+        <li><a href="faq.html">よくあるご質問</a></li>
+        <li><a href="community.html">地域への取り組み</a></li>
+        <li><a href="company.html">会社案内・アクセス</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h3 class="footer__h">事業者・関係機関</h3>
+      <ul class="footer__links">
+        <li><a href="service-pipe.html">埋設管照会（工事業者様）</a></li>
+        <li><a href="service-area.html">供給エリアマップ</a></li>
+        <li><a href="price.html#terms">供給約款・料金メニュー</a></li>
+        <li><a href="https://www.gas.or.jp/" target="_blank" rel="noopener">日本ガス協会 ↗</a></li>
+        <li><a href="https://www.japanlpg.or.jp/" target="_blank" rel="noopener">日本LPガス協会 ↗</a></li>
+        <li><a href="https://www.meti.go.jp/" target="_blank" rel="noopener">経済産業省 ↗</a></li>
+        <li><a href="https://www.city.iwamizawa.hokkaido.jp/" target="_blank" rel="noopener">岩見沢市 ↗</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer__bottom">
+    <small>© 岩見沢ガス株式会社</small>
+    <small><a href="#" class="footer__minor">プライバシーポリシー</a>・<a href="#" class="footer__minor">サイトのご利用について</a></small>
+  </div>
+</footer>
+
+<!-- ===== モバイル用フロートボタン ===== -->
+<a class="fab" href="emergency.html">⚠ 緊急・災害時</a>
+
+<!-- ===== プレビュー用コントロール（本番では削除） ===== -->
+<div class="preview-panel" id="previewPanel">
+  <button class="preview-panel__toggle" id="previewToggle" aria-expanded="false">PREVIEW</button>
+  <div class="preview-panel__body" hidden>
+    <p class="preview-panel__note">デザイン確認用のプレビューです。掲載内容はダミー、<mark class="ph">黄色の箇所</mark>は差し替え項目です。</p>
+    <label class="switch">
+      <input type="checkbox" id="emergencySwitch">
+      <span class="switch__track"></span>
+      <span class="switch__label">緊急表示モードを試す</span>
+    </label>
+    <p class="preview-panel__hint">ON にすると全ページ上部に緊急アラートが出て、TOPページが災害時専用表示に切り替わります（実運用では気象庁の地震情報を受信して自動切替する想定）。</p>
+  </div>
+</div>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

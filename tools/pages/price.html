@@ -1,0 +1,110 @@
+<!-- title: ガス料金・開栓/閉栓のお手続き | desc: 岩見沢ガスの料金表、供給約款、お支払い方法、使用開始・停止（開栓・閉栓）の予約フォーム。 | id: price -->
+
+<div class="page-head">
+  <div class="wrap">
+    <ol class="breadcrumb"><li><a href="index.html">ホーム</a></li><li>ガス料金について</li></ol>
+    <span class="eyebrow">Price</span>
+    <h1 class="h1">ガス料金について</h1>
+    <p class="lead">料金は「基本料金」と使用量に応じた「従量料金」で構成されます。お引越しなどの使用開始・停止は、このページのフォームからご予約いただけます。</p>
+  </div>
+</div>
+
+<section class="section section--tight" id="table">
+  <div class="wrap">
+    <h2 class="h2" style="font-size:1.6rem">都市ガス 一般料金（税込）<mark class="ph">最新の料金表に差し替え</mark></h2>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th>ご使用量の区分</th><th>基本料金（月額）</th><th>従量単価（1㎥あたり）</th></tr></thead>
+        <tbody>
+          <tr><td>0〜20㎥</td><td class="num"><mark class="ph">○,○○○</mark>円</td><td class="num"><mark class="ph">○○○</mark>円</td></tr>
+          <tr><td>21〜50㎥</td><td class="num"><mark class="ph">○,○○○</mark>円</td><td class="num"><mark class="ph">○○○</mark>円</td></tr>
+          <tr><td>51㎥〜</td><td class="num"><mark class="ph">○,○○○</mark>円</td><td class="num"><mark class="ph">○○○</mark>円</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note mt-1">※原料費調整制度により、従量単価は毎月変動します。当月の調整単価は <a href="news.html">お知らせ</a> に掲載しています。LPガス・簡易ガスの料金はお問い合わせください。</p>
+
+    <div class="grid-2 mt-3" id="terms">
+      <div class="panel">
+        <h3 class="h3">供給約款・料金メニュー</h3>
+        <ul class="icon-list">
+          <li><a href="#">一般ガス供給約款（PDF）<mark class="ph">要リンク</mark></a></li>
+          <li><a href="#">選択約款・料金メニュー一覧（PDF）<mark class="ph">要リンク</mark></a></li>
+          <li><a href="#">原料費調整制度について（PDF）<mark class="ph">要リンク</mark></a></li>
+          <li><a href="#">LPガス料金表（PDF）<mark class="ph">要リンク</mark></a></li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3 class="h3">お支払い方法</h3>
+        <ul class="icon-list">
+          <li>口座振替（毎月 <mark class="ph">○日</mark> 引き落とし）</li>
+          <li>クレジットカード払い</li>
+          <li>コンビニ・金融機関での払込票払い</li>
+          <li>スマートフォン決済（<mark class="ph">対応サービス要確認</mark>）</li>
+        </ul>
+        <p class="note">口座振替・カード払いのお申し込み用紙はお電話でお取り寄せいただけます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt" id="apply">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Start / Stop</span>
+      <h2 class="h2">開栓・閉栓（使用開始・停止）のご予約</h2>
+      <p class="lead">お引越しなどでガスの使用を開始・停止される場合は、<strong>ご希望日の4営業日前まで</strong>にご予約ください。開栓時は安全点検のため、立ち会いをお願いしています。</p>
+    </div>
+    <div class="cols cols--wide-left">
+      <form class="form js-demo-form panel">
+        <div class="form__fields">
+          <div>
+            <label>お手続きの種別<span class="req">必須</span></label>
+            <div class="radio-group">
+              <label><input type="radio" name="kind" value="open" checked> 開栓（使用開始）</label>
+              <label><input type="radio" name="kind" value="close"> 閉栓（使用停止）</label>
+              <label><input type="radio" name="kind" value="both"> 転居（停止＋開始）</label>
+            </div>
+          </div>
+          <div class="form__row">
+            <div><label>お名前<span class="req">必須</span><input required placeholder="山田 太郎"></label></div>
+            <div><label>お電話番号<span class="req">必須</span><input required type="tel" placeholder="000-0000-0000"></label></div>
+          </div>
+          <div><label>メールアドレス<input type="email" placeholder="example@example.com（受付確認をお送りします）"></label></div>
+          <div><label>ご使用場所の住所<span class="req">必須</span><input required placeholder="岩見沢市○○町○丁目○-○ ○○マンション○号室"></label></div>
+          <div class="form__row">
+            <div><label>ご希望日<span class="req">必須</span><input required type="date" data-min-days="4"></label></div>
+            <div><label>ご希望時間帯<select><option>指定なし</option><option>9:00〜12:00</option><option>13:00〜15:00</option><option>15:00〜17:00</option></select></label></div>
+          </div>
+          <div><label>備考（オートロック・駐車場・立ち会い者など）<textarea></textarea></label></div>
+          <button class="btn btn--amber btn--lg" type="submit">この内容で予約を申し込む</button>
+          <p class="note" style="margin:0">送信後、当社より日程確認のご連絡を差し上げます。予約確定はご連絡後となります。</p>
+        </div>
+        <div class="form__done"><strong>ご予約を受け付けました（デモ）</strong>本番では受付番号つきの確認メールが自動送信され、担当者から日程確定のご連絡をします。</div>
+      </form>
+      <aside>
+        <div class="panel">
+          <h3 class="h3">🔵 ご使用開始のお手続き</h3>
+          <ul class="icon-list">
+            <li>お引越し予定日の <strong>4営業日前まで</strong> にご連絡ください。</li>
+            <li>開栓には立ち会いが必要です（安全点検を行います）。</li>
+            <li>電話・フォームから受け付けています。</li>
+          </ul>
+        </div>
+        <div class="panel mt-1">
+          <h3 class="h3">🔴 ご解約（使用停止）のお手続き</h3>
+          <ul class="icon-list">
+            <li>停止希望日の <strong>4営業日前まで</strong> にご連絡ください。</li>
+            <li>オートロック等で作業に立ち会いが必要な場合があります。</li>
+            <li>最終月のご精算方法もあわせてご案内します。</li>
+          </ul>
+        </div>
+        <div class="tel-card tel-card--green mt-1">
+          <div class="tel-card__label">お電話でのご予約</div>
+          <a class="tel-card__num js-tel" href="tel:0000000000"><mark class="ph">0000-00-0000</mark></a>
+          <small>平日 8:30–17:30</small>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>

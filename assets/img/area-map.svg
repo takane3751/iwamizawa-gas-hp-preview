@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" width="800" height="560" role="img" aria-label="供給エリアの概略図（サンプル）。市街地中心部が都市ガス、団地エリアが簡易ガス。">
+  <defs>
+    <style>
+      .t{font:700 14px "Noto Sans JP",sans-serif;fill:#2A2622}
+      .s{font:500 12px "Noto Sans JP",sans-serif;fill:#6E655C}
+      .rd{stroke:#fff;stroke-width:5;fill:none;stroke-linecap:round}
+      .rd2{stroke:#E8DFCB;stroke-width:3;fill:none;stroke-linecap:round}
+    </style>
+    <pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="10" height="10" fill="#F6E1B9"/><line x1="0" y1="0" x2="0" y2="10" stroke="#D9922B" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="560" fill="#EFE9DC" rx="18"/>
+  <!-- 川（幾春別川 イメージ） -->
+  <path d="M-10 420 C120 380 200 440 320 400 S560 330 640 380 S760 420 820 390" stroke="#BFD7E6" stroke-width="22" fill="none" stroke-linecap="round"/>
+  <!-- 鉄道（函館本線イメージ） -->
+  <path d="M-10 250 L810 200" stroke="#7B7368" stroke-width="4"/>
+  <path d="M-10 250 L810 200" stroke="#fff" stroke-width="4" stroke-dasharray="12 12"/>
+  <!-- 簡易ガスエリア -->
+  <ellipse cx="640" cy="120" rx="95" ry="60" fill="url(#hatch)" stroke="#D9922B" stroke-width="2"/>
+  <ellipse cx="150" cy="470" rx="90" ry="52" fill="url(#hatch)" stroke="#D9922B" stroke-width="2"/>
+  <!-- 都市ガスエリア -->
+  <path d="M230 150 C300 110 420 100 500 150 S600 260 560 340 S420 420 330 390 S200 320 210 250 S200 170 230 150Z" fill="#2E6350" opacity=".28" stroke="#1F4A3C" stroke-width="2.5"/>
+  <!-- 道路 -->
+  <g class="rd"><path d="M100 60 L420 520"/><path d="M40 300 L780 260"/><path d="M520 40 L440 540"/><path d="M260 60 L650 500"/></g>
+  <g class="rd2"><path d="M100 60 L420 520"/><path d="M40 300 L780 260"/><path d="M520 40 L440 540"/><path d="M260 60 L650 500"/></g>
+  <!-- 駅 -->
+  <rect x="368" y="212" width="46" height="22" rx="4" fill="#1F4A3C"/>
+  <text x="391" y="255" text-anchor="middle" class="t">岩見沢駅</text>
+  <!-- 会社 -->
+  <circle cx="470" cy="300" r="12" fill="#F0B24D" stroke="#8C4A1E" stroke-width="2"/>
+  <text x="488" y="305" class="t">岩見沢ガス</text>
+  <!-- 地名（ダミー） -->
+  <text x="330" y="150" class="s">○○町</text>
+  <text x="520" y="380" class="s">○○地区</text>
+  <text x="600" y="124" class="s" text-anchor="middle">○○団地</text>
+  <text x="150" y="474" class="s" text-anchor="middle">○○団地</text>
+  <text x="80" y="150" class="s">▲ 至 札幌</text>
+  <text x="700" y="500" class="s">至 三笠 ▶</text>
+  <!-- 凡例 -->
+  <g transform="translate(24 24)">
+    <rect width="230" height="92" rx="10" fill="#fff" opacity=".92"/>
+    <rect x="14" y="16" width="22" height="16" rx="3" fill="#2E6350" opacity=".5" stroke="#1F4A3C"/>
+    <text x="46" y="29" class="t">都市ガス供給エリア</text>
+    <rect x="14" y="46" width="22" height="16" rx="3" fill="url(#hatch)" stroke="#D9922B"/>
+    <text x="46" y="59" class="t">簡易ガス（団地）エリア</text>
+    <text x="14" y="82" class="s">※概略図です。詳細は当社へお問い合わせください</text>
+  </g>
+</svg>

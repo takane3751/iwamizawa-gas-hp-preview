@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>お知らせ・新着情報｜岩見沢ガス株式会社</title>
+<meta name="description" content="災害情報、工事・点検のお知らせ、料金改定、検針期間など岩見沢ガスからの最新情報。">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="news">
+
+<!-- ===== 緊急時アラート（通常時は非表示。緊急表示モードでのみ出る） ===== -->
+<div class="alert-bar" id="alertBar" role="alert" hidden>
+  <div class="wrap alert-bar__inner">
+    <span class="alert-bar__label">⚠ 緊急情報</span>
+    <span class="alert-bar__text" id="alertText">地震の影響により一部地域でガスの供給を停止しています。復旧状況は災害・緊急時ページをご確認ください。</span>
+    <a class="alert-bar__link" href="emergency.html">供給状況・復帰手順を見る →</a>
+  </div>
+</div>
+
+<!-- ===== ユーティリティバー ===== -->
+<div class="utilbar">
+  <div class="wrap utilbar__inner">
+    <div class="utilbar__left">
+      <span class="utilbar__tag">ガスもれ・緊急時（24時間）</span>
+      <a class="utilbar__tel js-tel" href="tel:0000000000">TEL <mark class="ph">0000-00-0000</mark></a>
+    </div>
+    <div class="utilbar__right">
+      <span>受付時間 平日 8:30–17:30</span>
+      <a href="contact.html">お問い合わせ</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ヘッダー ===== -->
+<header class="header" id="header">
+  <div class="wrap header__inner">
+    <a class="brand" href="index.html">
+      <img class="brand__mark" src="assets/img/logo.svg" alt="" width="36" height="36">
+      <span class="brand__name">岩見沢ガス<span class="brand__sub">株式会社</span></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="メインメニュー">
+      <ul class="nav__list">
+        <li><a data-nav="news" href="news.html">お知らせ</a></li>
+        <li><a data-nav="service" href="service.html">事業案内</a></li>
+        <li><a data-nav="emergency" class="nav__emergency" href="emergency.html">災害・安全</a></li>
+        <li><a data-nav="price" href="price.html">ガス料金</a></li>
+        <li><a data-nav="faq" href="faq.html">Q&amp;A</a></li>
+        <li><a data-nav="community" href="community.html">地域貢献</a></li>
+        <li><a data-nav="company" href="company.html">会社案内</a></li>
+        <li class="nav__cta"><a data-nav="contact" class="btn btn--amber btn--sm" href="contact.html">お問い合わせ</a></li>
+      </ul>
+      <div class="nav__mobile-extra">
+        <a class="btn btn--red btn--block js-tel" href="tel:0000000000">📞 ガスもれ・緊急（24時間）<br><small>0000-00-0000</small></a>
+        <a class="btn btn--outline btn--block" href="emergency.html">災害・緊急時の対応を見る</a>
+      </div>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-controls="nav" aria-expanded="false" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+<div class="page-head">
+  <div class="wrap">
+    <ol class="breadcrumb"><li><a href="index.html">ホーム</a></li><li>お知らせ・新着情報</li></ol>
+    <span class="eyebrow">News</span>
+    <h1 class="h1">お知らせ・新着情報</h1>
+    <p class="lead">災害情報・工事・点検地区・法令変更・料金改定などの速報と、地域イベントのご案内を掲載しています。</p>
+  </div>
+</div>
+
+<section class="section section--tight">
+  <div class="wrap cols cols--wide-left">
+    <div>
+      <div class="news-filter" role="tablist" aria-label="カテゴリで絞り込む">
+        <button class="is-active" data-cat="all">すべて</button>
+        <button data-cat="important">重要</button>
+        <button data-cat="work">工事・点検</button>
+        <button data-cat="meter">検針</button>
+        <button data-cat="notice">お知らせ</button>
+        <button data-cat="event">イベント</button>
+      </div>
+      <ul class="news-list">
+        <li class="js-em-news" hidden><a href="emergency.html"><time>本日</time><span class="tag tag--important">緊急</span><span class="ttl">【緊急】地震の影響による供給停止と復旧状況について</span></a></li>
+        <li data-cat="meter"><a href="#"><time>2026.08.20</time><span class="tag tag--meter">検針</span><span class="ttl">9月分の検針期間は <mark class="ph">9月1日〜9月5日</mark> です。メーター周りに物を置かないようご協力ください</span></a></li>
+        <li data-cat="work"><a href="#"><time>2026.08.05</time><span class="tag tag--work">工事・点検</span><span class="ttl"><mark class="ph">○○町・○○地区</mark> ガス管入替工事のお知らせ（8/18〜9/12・片側交互通行あり）</span></a></li>
+        <li data-cat="work"><a href="#"><time>2026.08.01</time><span class="tag tag--work">工事・点検</span><span class="ttl">8月の定期保安点検地区のご案内 <mark class="ph">（○○町・○○町）</mark></span></a></li>
+        <li data-cat="important"><a href="#"><time>2026.07.20</time><span class="tag tag--important">重要</span><span class="ttl">夏季休業のお知らせと緊急受付体制について <mark class="ph">（例）</mark></span></a></li>
+        <li data-cat="notice"><a href="#"><time>2026.06.15</time><span class="tag tag--notice">お知らせ</span><span class="ttl">ガス料金（原料費調整）改定のご案内 <mark class="ph">（例）</mark></span></a></li>
+        <li data-cat="notice"><a href="#"><time>2026.06.01</time><span class="tag tag--notice">お知らせ</span><span class="ttl">液化石油ガス法の改正に伴う保安点検頻度の変更について <mark class="ph">（例）</mark></span></a></li>
+        <li data-cat="event"><a href="#"><time>2026.05.10</time><span class="tag tag--event">イベント</span><span class="ttl">地域防災訓練・ガス安全教室を開催しました <mark class="ph">（例）</mark></span></a></li>
+        <li data-cat="event"><a href="#"><time>2026.04.25</time><span class="tag tag--event">イベント</span><span class="ttl">岩見沢 <mark class="ph">○○祭り</mark> に協賛・出店します（キッチンカーでガスコンロ体験）</span></a></li>
+        <li data-cat="notice"><a href="#"><time>2026.04.01</time><span class="tag tag--notice">お知らせ</span><span class="ttl">ホームページをリニューアルしました</span></a></li>
+      </ul>
+    </div>
+    <aside>
+      <div class="meter-box">
+        <span class="eyebrow">Meter Reading</span>
+        <strong>今月の検針期間</strong>
+        <p style="font-family:var(--font-head);font-size:1.6rem;font-weight:900;color:var(--green);margin:.2em 0"><mark class="ph">9月1日（月）〜 9月5日（金）</mark></p>
+        <p class="note">検針員が訪問します。メーター周りの除雪・整理にご協力ください。検針票の見方は <a href="faq.html">よくあるご質問</a> をご覧ください。</p>
+      </div>
+      <div class="panel mt-1">
+        <h3 class="h3">災害時のお知らせについて</h3>
+        <p class="note">地震・大規模停電などの発生時は、このページと全ページ上部に緊急情報を優先表示します。供給状況と復旧見込みは <a href="emergency.html#status">災害・緊急時ページ</a> で随時更新します。</p>
+        <p class="note">※プレビュー：左下「PREVIEW」→「緊急表示モード」で見え方を確認できます。</p>
+      </div>
+      <div class="panel mt-1">
+        <h3 class="h3">SNSでも発信中</h3>
+        <p class="note">イベントや日々の活動は Instagram でも更新しています。</p>
+        <a class="btn btn--outline btn--sm" href="community.html#sns">SNS一覧へ</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== フッター ===== -->
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <div class="footer__col footer__brand">
+      <div class="brand brand--footer">
+        <img class="brand__mark" src="assets/img/logo.svg" alt="" width="32" height="32">
+        <span class="brand__name">岩見沢ガス株式会社</span>
+      </div>
+      <p class="footer__addr"><mark class="ph">〒000-0000 北海道岩見沢市○○町0-0</mark></p>
+      <p class="footer__tel">TEL <a class="js-tel" href="tel:0000000000"><mark class="ph">0000-00-0000</mark></a>　受付 平日 8:30–17:30</p>
+      <p class="footer__tel footer__tel--em">ガスもれ・緊急（24時間）<a class="js-tel" href="tel:0000000000"><mark class="ph">0000-00-0000</mark></a></p>
+      <div class="sns">
+        <a href="#" aria-label="Instagram" title="Instagram（要リンク設定）"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="YouTube" title="YouTube（要リンク設定）"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="X" title="X（要リンク設定）"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4l16 16M20 4L4 20"/></svg></a>
+      </div>
+    </div>
+    <div class="footer__col">
+      <h3 class="footer__h">サイト内メニュー</h3>
+      <ul class="footer__links">
+        <li><a href="news.html">お知らせ・新着情報</a></li>
+        <li><a href="service.html">事業案内</a></li>
+        <li><a href="emergency.html">災害・緊急時の案内</a></li>
+        <li><a href="price.html">ガス料金・開栓/閉栓</a></li>
+        <li><a href="faq.html">よくあるご質問</a></li>
+        <li><a href="community.html">地域への取り組み</a></li>
+        <li><a href="company.html">会社案内・アクセス</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h3 class="footer__h">事業者・関係機関</h3>
+      <ul class="footer__links">
+        <li><a href="service-pipe.html">埋設管照会（工事業者様）</a></li>
+        <li><a href="service-area.html">供給エリアマップ</a></li>
+        <li><a href="price.html#terms">供給約款・料金メニュー</a></li>
+        <li><a href="https://www.gas.or.jp/" target="_blank" rel="noopener">日本ガス協会 ↗</a></li>
+        <li><a href="https://www.japanlpg.or.jp/" target="_blank" rel="noopener">日本LPガス協会 ↗</a></li>
+        <li><a href="https://www.meti.go.jp/" target="_blank" rel="noopener">経済産業省 ↗</a></li>
+        <li><a href="https://www.city.iwamizawa.hokkaido.jp/" target="_blank" rel="noopener">岩見沢市 ↗</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer__bottom">
+    <small>© 岩見沢ガス株式会社</small>
+    <small><a href="#" class="footer__minor">プライバシーポリシー</a>・<a href="#" class="footer__minor">サイトのご利用について</a></small>
+  </div>
+</footer>
+
+<!-- ===== モバイル用フロートボタン ===== -->
+<a class="fab" href="emergency.html">⚠ 緊急・災害時</a>
+
+<!-- ===== プレビュー用コントロール（本番では削除） ===== -->
+<div class="preview-panel" id="previewPanel">
+  <button class="preview-panel__toggle" id="previewToggle" aria-expanded="false">PREVIEW</button>
+  <div class="preview-panel__body" hidden>
+    <p class="preview-panel__note">デザイン確認用のプレビューです。掲載内容はダミー、<mark class="ph">黄色の箇所</mark>は差し替え項目です。</p>
+    <label class="switch">
+      <input type="checkbox" id="emergencySwitch">
+      <span class="switch__track"></span>
+      <span class="switch__label">緊急表示モードを試す</span>
+    </label>
+    <p class="preview-panel__hint">ON にすると全ページ上部に緊急アラートが出て、TOPページが災害時専用表示に切り替わります（実運用では気象庁の地震情報を受信して自動切替する想定）。</p>
+  </div>
+</div>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

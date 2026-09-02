@@ -1,0 +1,70 @@
+<!-- title: 埋設管照会（工事業者様） | desc: 道路掘削工事前のガス管埋設状況を、発行IDでオンライン照会できます。初回はお申し込みが必要です。 | id: service-pipe -->
+
+<div class="page-head">
+  <div class="wrap">
+    <ol class="breadcrumb"><li><a href="index.html">ホーム</a></li><li><a href="service.html">事業案内</a></li><li>埋設管照会</li></ol>
+    <span class="badge-b2b">工事業者様向け</span>
+    <h1 class="h1">埋設管照会システム</h1>
+    <p class="lead">道路掘削・建築工事の前に、ガス管の埋設状況をオンラインで確認いただけます。ご来社・図面の郵送は不要です。ご利用には当社発行のIDが必要です。</p>
+  </div>
+</div>
+
+<section class="section section--tight">
+  <div class="wrap cols">
+    <div>
+      <div class="panel login">
+        <h2 class="h3">ログイン</h2>
+        <form class="form mt-1" id="pipeLogin">
+          <div><label>業者ID<span class="req">必須</span><input required placeholder="IWG-XXXX" autocomplete="username"></label></div>
+          <div><label>パスワード<span class="req">必須</span><input required type="password" placeholder="••••••••" autocomplete="current-password"></label></div>
+          <button class="btn btn--green btn--block" type="submit">ログインして照会する</button>
+          <p class="note center" style="margin:0">パスワードは毎年 <mark class="ph">4月</mark> に更新し、登録業者様へハガキでお知らせします。</p>
+        </form>
+        <div id="pipeResult" class="form__done mt-1" hidden style="display:block">
+          <strong>ログイン成功（デモ）</strong>
+          本番では、住所または地図から範囲を指定し、ガス本支管・供給管の埋設位置図（PDF）を閲覧・ダウンロードできる画面に遷移します。閲覧履歴は保安管理のため記録されます。
+        </div>
+      </div>
+    </div>
+    <div>
+      <h2 class="h2" style="font-size:1.6rem">初めてご利用の業者様</h2>
+      <p>初回のみ、下記のフォームまたはお電話でお申し込みください。内容を確認のうえ、ID・パスワードを発行します（<mark class="ph">2営業日</mark> 程度）。2回目以降はログインのみでご利用いただけます。</p>
+      <ol class="steps steps--green mt-2">
+        <li><strong>利用申請</strong><span>会社名・担当者・工事の種別をお送りください。</span></li>
+        <li><strong>審査・ID発行</strong><span>建設業許可等を確認し、IDとパスワードを発行します。</span></li>
+        <li><strong>オンライン照会</strong><span>工事箇所を指定して埋設位置図を取得。24時間ご利用可能。</span></li>
+        <li><strong>年次更新</strong><span>年1回パスワードを更新。案内ハガキをお送りします。</span></li>
+      </ol>
+      <div class="caution">
+        <strong>ご利用にあたって</strong>
+        埋設管情報は保安上の重要情報です。工事目的以外の利用・第三者への提供はお断りします。実際の掘削時は、現地での試掘・立会いのご依頼を必ず併せてお願いします。
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt" id="apply">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Application</span>
+      <h2 class="h2">利用申請フォーム（初回）</h2>
+    </div>
+    <form class="form js-demo-form panel" style="max-width:760px">
+      <div class="form__fields">
+        <div class="form__row">
+          <div><label>会社名<span class="req">必須</span><input required></label></div>
+          <div><label>ご担当者名<span class="req">必須</span><input required></label></div>
+        </div>
+        <div class="form__row">
+          <div><label>電話番号<span class="req">必須</span><input required type="tel"></label></div>
+          <div><label>メールアドレス<span class="req">必須</span><input required type="email"></label></div>
+        </div>
+        <div><label>主な工事種別<select><option>道路・水道工事</option><option>建築・解体工事</option><option>電気・通信工事</option><option>その他</option></select></label></div>
+        <div><label>建設業許可番号など<input placeholder="任意"></label></div>
+        <div><label>備考<textarea></textarea></label></div>
+        <button class="btn btn--amber btn--lg" type="submit">申請を送信する</button>
+      </div>
+      <div class="form__done"><strong>申請を受け付けました（デモ）</strong>本番では受付メールが自動送信され、担当者が確認後にIDをお送りします。</div>
+    </form>
+  </div>
+</section>

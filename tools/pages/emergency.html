@@ -1,0 +1,130 @@
+<!-- title: 災害・緊急時の案内 | desc: ガスもれ、地震、停電のときの対応手順。マイコンメーターの復帰方法を図解・動画でご案内。24時間の緊急連絡先。 | id: emergency -->
+
+<div class="page-head page-head--em">
+  <div class="wrap">
+    <ol class="breadcrumb"><li><a href="index.html">ホーム</a></li><li>災害・緊急時の案内</li></ol>
+    <span class="eyebrow" style="color:var(--red)">Emergency</span>
+    <h1 class="h1">災害・緊急時の案内</h1>
+    <p class="lead">地震・停電・ガスもれのときの対応手順をまとめています。まずは身の安全を第一に確保してください。</p>
+    <div class="hero__actions" style="margin-top:1.2em">
+      <a class="btn btn--red btn--lg js-tel" href="tel:0000000000">📞 ガスもれ・緊急通報（24時間）0000-00-0000</a>
+      <a class="btn btn--outline btn--lg" href="#recover">復帰手順を見る</a>
+    </div>
+  </div>
+</div>
+
+<!-- 供給状況（緊急時に更新） -->
+<section class="section section--tight" id="status">
+  <div class="wrap">
+    <div class="panel" style="border-left:6px solid var(--red)">
+      <div class="section-head--row" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:1em;align-items:center">
+        <h2 class="h3" style="color:var(--red)">供給状況</h2>
+        <span class="note">最終更新：<mark class="ph">○月○日 ○時○分</mark></span>
+      </div>
+      <p>現在、ガスの供給に影響はありません。災害発生時はこの欄に、地区ごとの供給停止・復旧見込みを掲載します。</p>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>地区</th><th>状況</th><th>復旧見込み</th></tr></thead>
+          <tbody>
+            <tr><td><mark class="ph">○○町・○○町</mark></td><td>通常供給</td><td>—</td></tr>
+            <tr><td><mark class="ph">○○団地</mark></td><td>通常供給</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note mt-1">※実運用では、気象庁の地震情報（震度5弱以上など）を受信すると全ページに緊急アラートを自動表示し、担当者がスマートフォンからこの欄を更新できるようにします。サーバーは2拠点で冗長化し、片方が停止しても表示を継続します。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ガスの臭い -->
+<section class="section section--alt">
+  <div class="wrap cols">
+    <div>
+      <span class="eyebrow" style="color:var(--red)">Gas Leak</span>
+      <h2 class="h2">ガスの臭いがしたら</h2>
+      <ol class="steps">
+        <li><strong>火気は絶対に使わない</strong><span>ライター・マッチはもちろん、換気扇・電気スイッチも操作しないでください（火花が出ることがあります）。</span></li>
+        <li><strong>窓や戸を開けて換気する</strong><span>ガスを外へ出します。LPガスは空気より重く、床にたまります。</span></li>
+        <li><strong>器具栓・元栓・メーターガス栓を閉める</strong><span>使用中の器具を止め、元栓を閉めます。</span></li>
+        <li><strong>屋外から当社へ連絡する</strong><span>室内では電話を使わず、屋外の安全な場所から。24時間受け付けています。</span></li>
+      </ol>
+    </div>
+    <div>
+      <div class="tel-card">
+        <div class="tel-card__label">ガスもれ・緊急のご連絡（24時間）</div>
+        <a class="tel-card__num js-tel" href="tel:0000000000"><mark class="ph">0000-00-0000</mark></a>
+        <small>スマートフォンではタップすると発信前に確認が表示されます</small>
+      </div>
+      <div class="caution mt-1">
+        <strong>ガス警報器が鳴ったら</strong>
+        警報器が鳴った場合も同じ手順で対応してください。警報器の電源は抜かず、換気のうえご連絡ください。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 復帰手順 -->
+<section class="section" id="recover">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" style="color:var(--red)">Recovery</span>
+      <h2 class="h2">マイコンメーターの復帰手順</h2>
+      <p class="lead">地震（震度5相当以上）や長時間の使用、ガスの異常な流れを検知すると、マイコンメーターが自動でガスを止めます。<strong>災害時だけでなく、日常でも赤ランプが点滅することがあります。</strong>安全を確認できれば、ご自身で復帰できます。</p>
+    </div>
+    <div class="cols cols--wide-left">
+      <div>
+        <div class="panel">
+          <h3 class="h3">マイコンメーターとは</h3>
+          <p class="note">ガスの使用量を計るメーターに、地震・異常流量・長時間使用を検知して自動でガスを止める安全装置を組み込んだものです。ほとんどのご家庭に設置されています。</p>
+          <img src="assets/img/meter.svg" alt="マイコンメーターの図解：赤ランプ、表示窓、復帰ボタンの位置" class="mt-1">
+        </div>
+      </div>
+      <div>
+        <ol class="steps">
+          <li><strong>すべてのガス機器を止める</strong><span>器具栓を閉め、使っていない機器も確認します。屋外の給湯器も含みます。</span></li>
+          <li><strong>復帰ボタンのキャップを外す</strong><span>メーター左下（機種により位置が異なります）の黒いキャップを左に回して外します。</span></li>
+          <li><strong>復帰ボタンをしっかり押して手を離す</strong><span>奥まで押し込むと赤ランプが点灯し、手を離すと再び点滅を始めます。キャップを元に戻します。</span></li>
+          <li><strong>約3分待つ</strong><span>この間、ガスは使わないでください。メーターが安全を確認しています。</span></li>
+          <li><strong>ランプの消灯を確認して使用再開</strong><span>点滅が止まっていれば復帰完了です。まだ点滅している場合は、ガスもれの可能性があります。使用せず当社へご連絡ください。</span></li>
+        </ol>
+        <div class="video-ph mt-2" role="img" aria-label="復帰手順の動画（差し替え）">
+          <small>復帰手順の動画（1分）をここに埋め込みます — 撮影後に差し替え</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 地震 -->
+<section class="section section--alt" id="quake">
+  <div class="wrap cols">
+    <div>
+      <span class="eyebrow" style="color:var(--red)">Earthquake</span>
+      <h2 class="h2">地震のときは</h2>
+      <p>揺れを感じたら、まず身の安全を確保してください。<strong>揺れている最中に火を消そうとしないでください。</strong>マイコンメーターが自動でガスを止めます。</p>
+      <ul class="icon-list">
+        <li>揺れが収まってから、器具栓・元栓を閉める</li>
+        <li>ガスの臭いがしないか確認。臭う場合は「ガスの臭いがしたら」の手順へ</li>
+        <li>臭いがなければ、上の手順でメーターを復帰</li>
+        <li>避難する際は元栓を閉め、可能ならメーターガス栓も閉める</li>
+      </ul>
+    </div>
+    <div class="panel" id="blackout">
+      <h3 class="h3">💡 停電のときは</h3>
+      <p class="note">給湯器・ファンヒーター・床暖房など電気を使うガス機器は、停電中は使えません。復電後は取扱説明書に従って再運転してください。ガスコンロ（電池式）は停電中も使えます。</p>
+      <h3 class="h3 mt-2">❄ 冬季の注意</h3>
+      <p class="note">給湯器の凍結防止のため、長期の停電時は水抜きをご検討ください。手順は <a href="faq.html">よくあるご質問</a> をご覧ください。メーター周りの除雪にもご協力をお願いします。</p>
+      <a class="btn btn--outline btn--sm mt-1" href="#">防災のしおり（PDF）<mark class="ph">要リンク</mark></a>
+    </div>
+  </div>
+</section>
+
+<section class="section cta">
+  <div class="wrap">
+    <h2 class="h2">判断に迷ったら、ためらわずご連絡ください。</h2>
+    <p>「たぶん大丈夫」でも構いません。24時間、保安担当が対応します。</p>
+    <div class="actions">
+      <a class="btn btn--red btn--lg js-tel" href="tel:0000000000">📞 0000-00-0000（24時間）</a>
+    </div>
+  </div>
+</section>

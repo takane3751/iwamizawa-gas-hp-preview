@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 420" width="520" height="420" role="img" aria-label="マイコンメーターの図解。左上に赤いランプ、中央に表示窓、右下に復帰ボタンとキャップ。">
+  <defs>
+    <style>
+      .lbl{font:700 15px "Noto Sans JP",sans-serif;fill:#1F4A3C}
+      .sub{font:500 12px "Noto Sans JP",sans-serif;fill:#6E655C}
+      .digit{font:900 26px "Zen Maru Gothic","Noto Sans JP",sans-serif;fill:#1F4A3C;letter-spacing:4px}
+    </style>
+  </defs>
+  <!-- 本体 -->
+  <rect x="120" y="60" width="280" height="300" rx="22" fill="#D7D2C8" stroke="#8E8779" stroke-width="3"/>
+  <rect x="140" y="80" width="240" height="180" rx="14" fill="#F4F1EA" stroke="#B5AE9E" stroke-width="2"/>
+  <!-- 配管 -->
+  <rect x="150" y="360" width="34" height="50" rx="6" fill="#8E8779"/>
+  <rect x="336" y="360" width="34" height="50" rx="6" fill="#8E8779"/>
+  <rect x="140" y="400" width="54" height="14" rx="4" fill="#6E685C"/>
+  <rect x="326" y="400" width="54" height="14" rx="4" fill="#6E685C"/>
+  <!-- 表示窓 -->
+  <rect x="165" y="150" width="190" height="52" rx="8" fill="#1F4A3C"/>
+  <text x="260" y="186" text-anchor="middle" class="digit" fill="#FBF6EC" style="fill:#FBF6EC">0 3 2 4 . 7</text>
+  <text x="260" y="222" text-anchor="middle" class="sub">㎥</text>
+  <!-- 赤ランプ -->
+  <circle cx="176" cy="112" r="14" fill="#B4271F">
+    <animate attributeName="opacity" values="1;.25;1" dur="1.2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="176" cy="112" r="14" fill="none" stroke="#7A1A14" stroke-width="2"/>
+  <!-- 復帰ボタン＋キャップ -->
+  <rect x="300" y="286" width="72" height="54" rx="10" fill="#1F4A3C"/>
+  <circle cx="336" cy="313" r="17" fill="#F0B24D" stroke="#8C4A1E" stroke-width="2"/>
+  <text x="336" y="318" text-anchor="middle" style="font:900 13px 'Noto Sans JP',sans-serif;fill:#1F4A3C">復帰</text>
+  <rect x="300" y="282" width="72" height="8" rx="3" fill="#2E6350"/>
+  <!-- ロゴ風 -->
+  <text x="260" y="330" text-anchor="middle" class="sub">MICOM METER</text>
+  <!-- 引き出し線 -->
+  <g stroke="#D9922B" stroke-width="2" fill="none">
+    <path d="M176 98 L176 36 L60 36"/>
+    <path d="M372 313 L440 313 L440 250"/>
+    <path d="M355 176 L470 176 L470 120"/>
+  </g>
+  <g fill="#D9922B"><circle cx="176" cy="98" r="4"/><circle cx="372" cy="313" r="4"/><circle cx="355" cy="176" r="4"/></g>
+  <!-- ラベル -->
+  <text x="14" y="30" class="lbl">① 赤ランプ</text>
+  <text x="14" y="48" class="sub">点滅＝安全装置が作動してガスを止めています</text>
+  <text x="404" y="106" class="lbl" text-anchor="start">② 表示窓</text>
+  <text x="404" y="124" class="sub" text-anchor="start">使用量・エラー表示</text>
+  <text x="392" y="236" class="lbl">③ 復帰ボタン</text>
+  <text x="392" y="252" class="sub">キャップを外して奥まで押す</text>
+</svg>
