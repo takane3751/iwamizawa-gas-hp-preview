@@ -126,6 +126,43 @@
     });
   }
 
+  /* ---------- ヘッダー：スクロールで影 ---------- */
+  function onScroll() { header.classList.toggle('is-scrolled', window.scrollY > 8); }
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* ---------- 文字サイズ切替（標準／大） ---------- */
+  var fsButtons = document.querySelectorAll('[data-fs]');
+  function applyFs(size) {
+    document.documentElement.classList.toggle('fs-lg', size === 'lg');
+    fsButtons.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.fs === size ? 'true' : 'false'); });
+    setHeaderBottom();
+  }
+  applyFs(document.documentElement.classList.contains('fs-lg') ? 'lg' : 'md');
+  fsButtons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      try { localStorage.setItem('iwg_fs', b.dataset.fs); } catch (_) {}
+      applyFs(b.dataset.fs);
+    });
+  });
+
+  /* ---------- スクロールでふわっと表示 ---------- */
+  var reveals = document.querySelectorAll('.reveal');
+  if (/[?&]noanim/.test(location.search)) {
+    reveals.forEach(function (el) { el.style.transition = 'none'; el.classList.add('is-in'); });
+  } else if ('IntersectionObserver' in window && reveals.length) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    reveals.forEach(function (el) { io.observe(el); });
+    // 画面内に最初からあるものは即表示（スクリーンショット・印刷でも欠けないように）
+    setTimeout(function () { reveals.forEach(function (el) { if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('is-in'); }); }, 50);
+  } else {
+    reveals.forEach(function (el) { el.classList.add('is-in'); });
+  }
+
   /* ---------- 開栓・閉栓 希望日の最小値（4営業日後の目安） ---------- */
   var d = document.querySelector('input[type="date"][data-min-days]');
   if (d) {
