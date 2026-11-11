@@ -44,38 +44,86 @@
     if (!ok) e.preventDefault();
   });
 
-  /* ---------- 緊急表示モード ----------
-     プレビューでは localStorage / ?emergency=1 で切替。
-     実運用では気象庁 XML（地震情報）を受信するサーバー側処理が
-     フラグを立て、全ページがこの状態に切り替わる想定。 */
-  var KEY = 'iwg_emergency_mode';
+  /* ---------- 災害時の表示（段階別） ----------
+     プレビューでは PREVIEW パネル / URL で切替。
+       ?level=4 | 5- | 5+ | snow | manual | off
+       ?emergency=1 は旧URL互換（manual と同じ）、?emergency=0 は off
+     実運用では気象庁 XML（震度・大雪）を受信するサーバー側処理が段階を決め、
+     担当者が手動で出した表示（manual）があればそちらを優先する想定。 */
+  var LEVEL_KEY = 'iwg_emergency_level';
+  var LEVELS = {
+    off: null,
+    '4': { tone: 'notice', hero: false, icon: 'i-alert', label: 'お知らせ',
+      text: '岩見沢市で震度4の地震がありました（出典：気象庁）。ガスの臭いがしたら火を使わずにご連絡ください。ガスが出ないときは、メーターの復帰方法をご覧ください。',
+      link: '復帰方法・連絡先を見る', href: 'emergency.html#recover', news: null },
+    '5-': { tone: 'alert', hero: true, icon: 'i-alert', label: '地震の情報',
+      text: '岩見沢市で震度5弱の地震がありました（出典：気象庁）。当社で状況を確認中です。',
+      link: 'ガスが出ない・臭いがするとき', href: 'emergency.html',
+      news: '【地震】震度5弱の地震を受けて状況を確認しています' },
+    '5+': { tone: 'alert', hero: true, icon: 'i-alert', label: '地震の情報',
+      text: '岩見沢市で震度6弱の地震がありました（出典：気象庁）。一部の地域でガスの供給を停止している可能性があります。確認ができ次第お知らせします。',
+      link: 'いまできること・連絡先', href: 'emergency.html',
+      news: '【地震】供給停止の可能性と、確認の状況について' },
+    snow: { tone: 'notice', hero: false, icon: 'i-snow', label: '大雪のお知らせ',
+      text: '岩見沢市で大雪となっています（出典：気象庁）。一酸化炭素中毒を防ぐため、給排気口やガスメーターのまわりの除雪をお願いします。',
+      link: '冬季の注意を見る', href: 'emergency.html#blackout', news: null },
+    manual: { tone: 'alert', hero: true, icon: 'i-alert', label: '緊急情報',
+      text: '地震の影響により一部地域でガスの供給を停止しています。復旧状況は災害・緊急時ページをご確認ください。',
+      link: '供給状況・復帰手順を見る', href: 'emergency.html',
+      news: '【緊急】地震の影響による供給停止と復旧状況について' }
+  };
   var qs = new URLSearchParams(location.search);
-  if (qs.has('emergency')) {
-    try { localStorage.setItem(KEY, qs.get('emergency') === '0' ? '0' : '1'); } catch (_) {}
+  var urlLevel = qs.has('level') ? qs.get('level').replace(' ', '+')   // ?level=5+ の + は空白で届く
+               : qs.has('emergency') ? (qs.get('emergency') === '0' ? 'off' : 'manual') : null;
+  if (urlLevel && urlLevel in LEVELS) {
+    try { localStorage.setItem(LEVEL_KEY, urlLevel); } catch (_) {}
   }
-  var isEm = false;
-  try { isEm = localStorage.getItem(KEY) === '1'; } catch (_) {}
+  var level = 'off';
+  try {
+    var saved = localStorage.getItem(LEVEL_KEY);
+    if (saved === null && localStorage.getItem('iwg_emergency_mode') === '1') saved = 'manual'; // 旧スイッチの状態を引き継ぐ
+    if (saved in LEVELS) level = saved;
+  } catch (_) {}
+  if (urlLevel && urlLevel in LEVELS) level = urlLevel;
 
   var alertBar = document.getElementById('alertBar');
-  var sw = document.getElementById('emergencySwitch');
-  function applyEmergency(on) {
-    document.body.classList.toggle('is-emergency', on);
-    if (alertBar) alertBar.hidden = !on;
-    if (sw) sw.checked = on;
-    // お知らせ一覧の先頭を強調（ページ側に .js-em-news があれば）
+  var radios = document.querySelectorAll('input[name="emLevel"]');
+  function setText(id, s) { var el = document.getElementById(id); if (el) el.textContent = s; }
+  function applyLevel(lv) {
+    var cfg = LEVELS[lv];
+    var hero = !!(cfg && cfg.hero);
+    document.body.dataset.em = cfg ? lv : '';
+    document.body.classList.toggle('is-emergency', hero);
+    if (alertBar) {
+      alertBar.hidden = !cfg;
+      if (cfg) {
+        alertBar.className = 'alert-bar alert-bar--' + cfg.tone;
+        setText('alertLabel', cfg.label);
+        setText('alertText', cfg.text);
+        setText('alertLink', cfg.link);
+        document.getElementById('alertLink').setAttribute('href', cfg.href);
+        document.getElementById('alertIcon').setAttribute('href', '#' + cfg.icon);
+      }
+    }
+    radios.forEach(function (r) { r.checked = r.value === lv; });
+    // お知らせ一覧の先頭に緊急行を出す（TOP を切り替える段階のみ）
     document.querySelectorAll('.js-em-news').forEach(function (li) {
+      var on = !!(cfg && cfg.news);
       li.classList.toggle('is-urgent', on);
       li.hidden = !on;
+      var ttl = li.querySelector('.js-em-news-ttl');
+      if (on && ttl) ttl.textContent = cfg.news;
     });
     setHeaderBottom();
   }
-  applyEmergency(isEm);
-  if (sw) {
-    sw.addEventListener('change', function () {
-      try { localStorage.setItem(KEY, sw.checked ? '1' : '0'); } catch (_) {}
-      applyEmergency(sw.checked);
+  applyLevel(level);
+  radios.forEach(function (r) {
+    r.addEventListener('change', function () {
+      if (!r.checked) return;
+      try { localStorage.setItem(LEVEL_KEY, r.value); } catch (_) {}
+      applyLevel(r.value);
     });
-  }
+  });
 
   /* ---------- プレビューパネル開閉 ---------- */
   var pt = document.getElementById('previewToggle');

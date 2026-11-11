@@ -21,8 +21,61 @@
   </div>
 </section>
 
-<!-- ===== HERO（緊急時専用表示） ===== -->
-<section class="hero-em" aria-label="緊急情報">
+<!-- ===== HERO（緊急時専用表示） =====
+     表示の段階（body[data-em]）:
+       5-     … 震度5弱：自動。「状況を確認中」＋行動の切り分け
+       5+     … 震度5強以上：自動。供給停止の「可能性」まで（確定情報は出さない）
+       manual … 担当者が手動で出す確定情報（供給停止エリアあり）
+     震度4・大雪は TOP を切り替えず、上部のお知らせ帯のみ。 -->
+<section class="hero-em hero-em--check" aria-label="地震の情報（震度5弱）">
+  <div class="wrap hero-em__inner">
+    <span class="hero-em__status">ただいま状況を確認中です</span>
+    <h1 class="hero-em__title">岩見沢市で震度5弱の<br>地震がありました</h1>
+    <p><mark class="ph">○月○日 ○時○分</mark>ごろの地震を受けて、当社で供給設備の状況を確認しています。<strong>まず、あてはまる方をお選びください。</strong></p>
+    <div class="hero-em__grid hero-em__grid--choice">
+      <a class="hero-em__card" href="emergency.html#recover">
+        <strong><svg class="ico"><use href="#i-meter"/></svg>ガスが出ない方はこちら</strong>
+        <span>揺れを感じると、メーターが自動でガスを止めます。ガスの臭いがなければ、ご自身で復帰できます（約3分）。</span>
+      </a>
+      <a class="hero-em__card hero-em__card--smell" href="emergency.html">
+        <strong><svg class="ico"><use href="#i-alert"/></svg>ガスの臭いがする方はこちら</strong>
+        <span>火を使わない／換気扇・電気のスイッチにふれない／窓を開けて屋外へ。そのうえで下記へお電話ください。</span>
+      </a>
+      <a class="hero-em__card js-tel" href="tel:0000000000">
+        <strong><svg class="ico"><use href="#i-phone"/></svg>ガスもれ・緊急通報（24時間）</strong>
+        <div class="num">0000-00-0000</div>
+        <span>タップで発信します</span>
+      </a>
+    </div>
+    <p class="hero-em__updated">震度の出典：気象庁　／　この表示は自動で切り替わりました（<mark class="ph">○時○分</mark>）。確認が済みしだい更新します。</p>
+  </div>
+</section>
+
+<section class="hero-em hero-em--strong" aria-label="地震の情報（震度5強以上）">
+  <div class="wrap hero-em__inner">
+    <span class="hero-em__status">供給を停止している可能性があります</span>
+    <h1 class="hero-em__title">岩見沢市で震度<mark class="ph">6弱</mark>の<br>地震がありました</h1>
+    <p>安全のため、一部の地域でガスの供給を停止している可能性があります。当社で状況を確認中です。<strong>確認ができ次第、このページでお知らせします。</strong></p>
+    <div class="hero-em__grid hero-em__grid--choice">
+      <a class="hero-em__card hero-em__card--smell" href="emergency.html">
+        <strong><svg class="ico"><use href="#i-alert"/></svg>ガスの臭いがする方はこちら</strong>
+        <span>火を使わない／換気扇・電気のスイッチにふれない／窓を開けて屋外へ。そのうえで下記へお電話ください。</span>
+      </a>
+      <a class="hero-em__card" href="emergency.html#recover">
+        <strong><svg class="ico"><use href="#i-meter"/></svg>ガスが出ない方はこちら</strong>
+        <span>揺れを感じると、メーターが自動でガスを止めます。ガスの臭いがなければ、ご自身で復帰できます（約3分）。</span>
+      </a>
+      <a class="hero-em__card js-tel" href="tel:0000000000">
+        <strong><svg class="ico"><use href="#i-phone"/></svg>ガスもれ・緊急通報（24時間）</strong>
+        <div class="num">0000-00-0000</div>
+        <span>タップで発信します</span>
+      </a>
+    </div>
+    <p class="hero-em__updated">震度の出典：気象庁　／　この表示は自動で切り替わりました（<mark class="ph">○時○分</mark>）。供給の状況は確認後に担当者が掲載します。</p>
+  </div>
+</section>
+
+<section class="hero-em hero-em--manual" aria-label="緊急情報">
   <div class="wrap hero-em__inner">
     <span class="hero-em__status">供給停止エリアあり</span>
     <h1 class="hero-em__title">地震によるガス供給停止と<br>復旧のご案内</h1>
@@ -42,7 +95,7 @@
         <span>地区ごとの供給状況と復旧見込みを随時更新しています。</span>
       </a>
     </div>
-    <p class="hero-em__updated">最終更新：<mark class="ph">○月○日 ○時○分</mark>　※この表示は災害発生時に自動で切り替わります（プレビューでは左下のスイッチで再現）</p>
+    <p class="hero-em__updated">最終更新：<mark class="ph">○月○日 ○時○分</mark>　※この表示は担当者が手動で出します（プレビューでは左下の PREVIEW から再現）</p>
   </div>
 </section>
 
@@ -100,7 +153,7 @@
       <a class="more" href="news.html">お知らせ一覧</a>
     </div>
     <ul class="news-list reveal">
-      <li class="js-em-news" hidden><a href="emergency.html"><time>TODAY</time><span class="tag tag--important">緊急</span><span class="ttl">【緊急】地震の影響による供給停止と復旧状況について</span></a></li>
+      <li class="js-em-news" hidden><a href="emergency.html"><time>TODAY</time><span class="tag tag--important">緊急</span><span class="ttl js-em-news-ttl">【緊急】地震の影響による供給停止と復旧状況について</span></a></li>
       <li><a href="news.html"><time>2026.08.20</time><span class="tag tag--meter">検針</span><span class="ttl">9月分の検針期間は <mark class="ph">9月1日〜9月5日</mark> です</span></a></li>
       <li><a href="news.html"><time>2026.07.20</time><span class="tag tag--important">重要</span><span class="ttl">夏季休業のお知らせと緊急受付体制について <mark class="ph">（例）</mark></span></a></li>
       <li><a href="news.html"><time>2026.06.15</time><span class="tag tag--notice">お知らせ</span><span class="ttl">ガス料金（原料費調整）改定のご案内 <mark class="ph">（例）</mark></span></a></li>

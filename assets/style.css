@@ -77,6 +77,10 @@ mark.ph{background:transparent;color:inherit;padding:0 .2em;border-radius:4px;ou
 .alert-bar__label .ico{width:1.1em;height:1.1em}
 .alert-bar__text{flex:1 1 300px}
 .alert-bar__link{color:#fff;white-space:nowrap;font-weight:700}
+/* お知らせ帯（震度4・大雪）：赤は使わず、オレンジ系で控えめに */
+.alert-bar--notice{background:var(--orange-soft);color:var(--ink);border-bottom:1px solid #F3D3B8}
+.alert-bar--notice .alert-bar__label{background:var(--orange);color:#fff}
+.alert-bar--notice .alert-bar__link{color:#B9541A}
 
 /* ================= ユーティリティバー ================= */
 .utilbar{background:var(--bg-2);border-bottom:1px solid var(--line-2);font-size:.8rem;color:var(--ink-2)}
@@ -236,7 +240,19 @@ mark.ph{background:transparent;color:inherit;padding:0 .2em;border-radius:4px;ou
 .hero-em__card span{color:var(--muted);font-size:.88rem}
 .hero-em__updated{margin-top:1.5em;font-size:.85rem;color:rgba(255,255,255,.85)!important}
 body.is-emergency .hero{display:none}
-body.is-emergency .hero-em{display:block}
+body[data-em="5-"] .hero-em--check,body[data-em="5+"] .hero-em--strong,body[data-em="manual"] .hero-em--manual{display:block}
+/* 震度5弱：「状況確認中」。赤一色にはせず、淡い赤で落ち着いたトーンに */
+.hero-em--check{background:var(--red-soft);color:var(--ink)}
+.hero-em--check::before{background:radial-gradient(circle,rgba(200,50,43,.08),rgba(200,50,43,0) 65%)}
+.hero-em--check .hero-em__title{color:var(--red)}
+.hero-em--check .hero-em__inner>p{color:var(--ink-2)}
+.hero-em--check .hero-em__status{background:var(--red);color:#fff}
+.hero-em--check .hero-em__status::before{background:#fff}
+.hero-em--check .hero-em__updated{color:var(--muted)!important}
+.hero-em--check .hero-em__card{box-shadow:var(--shadow);border:1px solid var(--red-line)}
+.hero-em__grid--choice{grid-template-columns:1fr 1fr 1fr}
+.hero-em__card--smell strong{color:var(--red)}
+@media (max-width:820px){.hero-em__grid--choice{grid-template-columns:1fr}}
 @media (max-width:820px){.hero-em__grid{grid-template-columns:1fr}}
 
 /* ================= クイックメニュー（HERO に重ねる） ================= */
@@ -540,3 +556,12 @@ body[data-page="emergency"] .fab{display:none}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .reveal.is-in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}*{scroll-behavior:auto!important}}
+/* プレビュー：災害時の表示の段階 */
+.em-levels{border:0;margin:0;padding:0;display:grid;gap:.25em}
+.em-levels legend{font-weight:700;margin-bottom:.4em;padding:0}
+.em-levels label{display:flex;align-items:flex-start;gap:.55em;cursor:pointer;padding:.3em .5em;border-radius:8px;line-height:1.5}
+.em-levels label:hover{background:var(--bg-2)}
+.em-levels input{margin:.25em 0 0;accent-color:var(--red);flex:none}
+.em-levels small{display:block;font-size:.72rem;color:var(--muted);font-weight:400}
+.em-levels label:has(input:checked){background:var(--red-soft);font-weight:700}
+

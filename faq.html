@@ -57,9 +57,9 @@
 <!-- ===== 緊急時アラート（通常時は非表示。緊急表示モードでのみ出る） ===== -->
 <div class="alert-bar" id="alertBar" role="alert" hidden>
   <div class="wrap alert-bar__inner">
-    <span class="alert-bar__label"><svg class="ico"><use href="#i-alert"/></svg>緊急情報</span>
+    <span class="alert-bar__label"><svg class="ico"><use id="alertIcon" href="#i-alert"/></svg><span id="alertLabel">緊急情報</span></span>
     <span class="alert-bar__text" id="alertText">地震の影響により一部地域でガスの供給を停止しています。復旧状況は災害・緊急時ページをご確認ください。</span>
-    <a class="alert-bar__link" href="emergency.html">供給状況・復帰手順を見る</a>
+    <a class="alert-bar__link" id="alertLink" href="emergency.html">供給状況・復帰手順を見る</a>
   </div>
 </div>
 
@@ -277,12 +277,16 @@
   <button class="preview-panel__toggle" id="previewToggle" aria-expanded="false">PREVIEW</button>
   <div class="preview-panel__body" hidden>
     <p class="preview-panel__note">デザイン確認用のプレビューです。掲載内容はダミー、<mark class="ph">点線の箇所</mark>は差し替え項目です。</p>
-    <label class="switch">
-      <input type="checkbox" id="emergencySwitch">
-      <span class="switch__track"></span>
-      <span class="switch__label">緊急表示モードを試す</span>
-    </label>
-    <p class="preview-panel__hint">ON にすると全ページ上部に緊急アラートが出て、TOPページが災害時専用表示に切り替わります（実運用では気象庁の地震情報を受信して自動切替する想定）。</p>
+    <fieldset class="em-levels">
+      <legend>災害時の表示を試す</legend>
+      <label><input type="radio" name="emLevel" value="off" checked><span>通常</span></label>
+      <label><input type="radio" name="emLevel" value="4"><span>震度4<small>お知らせ帯のみ</small></span></label>
+      <label><input type="radio" name="emLevel" value="5-"><span>震度5弱<small>TOPを「状況確認中」に</small></span></label>
+      <label><input type="radio" name="emLevel" value="5+"><span>震度5強以上<small>TOPを強い表示に</small></span></label>
+      <label><input type="radio" name="emLevel" value="snow"><span>大雪<small>お知らせ帯のみ</small></span></label>
+      <label><input type="radio" name="emLevel" value="manual"><span>手動：供給停止<small>担当者が確定情報を出す</small></span></label>
+    </fieldset>
+    <p class="preview-panel__hint">震度と大雪は、気象庁の情報を受けて<strong>自動</strong>で切り替わる想定です（区切りと文言はたたき台）。供給停止などの確定情報は担当者が<strong>手動</strong>で出し、手動の設定が常に優先されます。</p>
   </div>
 </div>
 
