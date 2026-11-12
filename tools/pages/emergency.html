@@ -19,17 +19,21 @@
     <div class="panel" style="border-left:6px solid var(--red)">
       <div class="section-head--row" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:1em;align-items:center">
         <h2 class="h3" style="color:var(--red)">供給状況</h2>
-        <span class="note">最終更新：<mark class="ph">○月○日 ○時○分</mark></span>
+        <span class="note" id="supplyUpdated">最終更新：<mark class="ph">○月○日 ○時○分</mark></span>
       </div>
-      <p>現在、ガスの供給に影響はありません。災害発生時はこの欄に、地区ごとの供給停止・復旧見込みを掲載します。</p>
+      <p id="supplyLead">現在、ガスの供給に影響はありません。災害発生時はこの欄に、地区ごとの供給停止・復旧見込みを掲載します。</p>
       <div class="table-wrap">
         <table class="table">
           <thead><tr><th>地区</th><th>状況</th><th>復旧見込み</th></tr></thead>
-          <tbody>
+          <tbody id="supplyBody">
             <tr><td><mark class="ph">○○町・○○町</mark></td><td>通常供給</td><td>—</td></tr>
             <tr><td><mark class="ph">○○団地</mark></td><td>通常供給</td><td>—</td></tr>
           </tbody>
         </table>
+      </div>
+      <div class="em-posts" id="emPosts" hidden>
+        <h3 class="h3 mt-1">当社からのお知らせ</h3>
+        <ul class="em-posts__list" id="emPostList"></ul>
       </div>
       <p class="note mt-1">※実運用では、気象庁の地震情報（震度5弱以上など）を受信すると全ページに緊急アラートを自動表示し、担当者がスマートフォンからこの欄を更新できるようにします。サーバーは2拠点で冗長化し、片方が停止しても表示を継続します。</p>
     </div>

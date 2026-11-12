@@ -125,6 +125,37 @@
     });
   });
 
+  /* ---------- 担当者画面（admin.html デモ）から出した情報の反映 ----------
+     実運用では公開用の status.json / posts.json を読む。デモでは同じ端末の localStorage を読む。 */
+  function loadJSON(k) { try { return JSON.parse(localStorage.getItem(k)); } catch (_) { return null; } }
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  var supply = loadJSON('iwg_demo_supply');
+  if (supply && supply.rows && document.getElementById('supplyBody')) {
+    var cls = { '供給停止': 'st-stop', '復旧作業中': 'st-work', '復旧済み': 'st-done' };
+    document.getElementById('supplyBody').innerHTML = supply.rows.map(function (r) {
+      return '<tr><td>' + esc(r.area) + '</td><td class="' + (cls[r.st] || '') + '">' + esc(r.st) + '</td><td>' + (r.eta ? esc(r.eta) : '—') + '</td></tr>';
+    }).join('');
+    document.getElementById('supplyUpdated').textContent = '最終更新：' + supply.updated;
+    var affected = supply.rows.some(function (r) { return r.st === '供給停止' || r.st === '復旧作業中'; });
+    document.getElementById('supplyLead').textContent = affected
+      ? '一部の地区でガスの供給を停止しています。地区ごとの状況と復旧見込みは次のとおりです。'
+      : '現在、ガスの供給に影響はありません。';
+  }
+  var posts = loadJSON('iwg_demo_posts');
+  var postBox = document.getElementById('emPosts');
+  if (posts && posts.length && postBox) {
+    postBox.hidden = false;
+    document.getElementById('emPostList').innerHTML = posts.map(function (p) {
+      var fl = (p.files || []).map(function (f) {
+        if (f.url && f.type.indexOf('image') === 0) return '<a class="em-posts__photo" href="' + f.url + '" target="_blank" rel="noopener"><img src="' + f.url + '" alt="' + esc(p.title) + 'の写真"></a>';
+        var label = esc(f.name) + '（' + (f.type.indexOf('pdf') > -1 ? 'PDF・' : '') + Math.max(1, Math.round(f.size / 1024)) + 'KB）';
+        return f.url ? '<a href="' + f.url + '" download="' + esc(f.name) + '">' + label + '</a>' : '<a href="#" onclick="alert(\'デモのため、このファイルの中身は保存していません\');return false">' + label + '</a>';
+      }).join('');
+      return '<li><div class="em-posts__meta">' + esc(p.time) + '　対象：' + esc(p.area) + '</div><div class="em-posts__ttl">' + esc(p.title) + '</div>' +
+        (p.body ? '<p class="em-posts__body">' + esc(p.body) + '</p>' : '') + (fl ? '<div class="em-posts__files">' + fl + '</div>' : '') + '</li>';
+    }).join('');
+  }
+
   /* ---------- プレビューパネル開閉 ---------- */
   var pt = document.getElementById('previewToggle');
   if (pt) {

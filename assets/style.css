@@ -565,3 +565,17 @@ body[data-page="emergency"] .fab{display:none}
 .em-levels small{display:block;font-size:.72rem;color:var(--muted);font-weight:400}
 .em-levels label:has(input:checked){background:var(--red-soft);font-weight:700}
 
+.preview-panel__admin{display:flex;align-items:center;justify-content:center;gap:.3em;margin-top:.8em;background:var(--green);color:#fff;border-radius:10px;padding:.6em .8em;font-weight:700;text-decoration:none}
+.preview-panel__admin:hover{color:#fff;background:var(--green-2)}
+/* 担当者画面から出したお知らせ（災害・緊急ページ） */
+.em-posts__list{list-style:none;margin:.6em 0 0;padding:0}
+.em-posts__list>li{border:1px solid var(--line);border-radius:12px;padding:1em 1.1em;margin-top:.7em;background:#fff}
+.em-posts__meta{font-size:.82rem;color:var(--muted)}
+.em-posts__ttl{font-weight:700;font-size:1.05rem;line-height:1.55;margin:.15em 0 .35em;word-break:break-all}
+.em-posts__body{margin:0 0 .5em;white-space:pre-wrap;word-break:break-all}
+.em-posts__files{display:flex;flex-wrap:wrap;gap:.5em}
+.em-posts__files a{display:inline-flex;align-items:center;gap:.4em;border:1px solid var(--line);border-radius:99px;padding:.3em .9em;font-size:.9rem;text-decoration:none;word-break:break-all}
+.em-posts__files a.em-posts__photo{display:block;border:0;padding:0;border-radius:10px;flex-basis:100%}
+.em-posts__files img{width:100%;max-width:360px;border-radius:10px;margin-top:.3em}
+.st-stop{color:var(--red);font-weight:700}.st-work{color:#B9541A;font-weight:700}.st-done{color:var(--green);font-weight:700}
+@media (max-width:600px){#status .table th,#status .table td{padding:.8em .7em;white-space:nowrap}#status .table th:last-child,#status .table td:last-child{white-space:normal}}

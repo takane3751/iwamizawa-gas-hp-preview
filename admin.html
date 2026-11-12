@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>担当者画面（デモ）｜岩見沢ガス 災害情報</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0F4C3A">
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/admin.css">
+</head>
+<body>
+<!-- 手書きのページ（tools/build.py の生成対象ではない）。
+     実運用の担当者画面は公開サイトとは別のサーバー・別のドメインに置く想定。 -->
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 11L12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="M3 6.5l6-2.5 6 2.5 6-2.5v13.5l-6 2.5-6-2.5-6 2.5z"/><path d="M9 4v13.5M15 6.5V20"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3.5L2.8 19.5h18.4z"/><path d="M12 9.5v4.5M12 16.6v.01"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M3.5 8h4l1.6-2.5h5.8L16.5 8h4v11h-17z"/><circle cx="12" cy="13.3" r="3.4"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3M12 14.5v2.5"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5H5V6h5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+</svg>
+
+<div class="demo-note">デザイン確認用のデモです。入力した内容と添付ファイルは<strong>この端末のブラウザの中にだけ</strong>保存され、どこにも送信されません。</div>
+
+<!-- ===== ログイン ===== -->
+<main class="screen" id="scrLogin">
+  <div class="login">
+    <div class="login__brand"><img src="assets/img/logo.svg" alt="" width="44" height="44"><div><b>岩見沢ガス</b><span>災害情報 担当者画面</span></div></div>
+    <form id="loginForm" class="card">
+      <p class="step-label"><svg class="ico"><use href="#i-lock"/></svg>ログイン</p>
+      <label class="field"><span>登録したメールアドレス</span>
+        <input type="email" id="loginMail" placeholder="tantou@example.jp" autocomplete="off"></label>
+      <div id="codeStep" hidden>
+        <label class="field"><span>メールに届いた6桁のコード</span>
+          <input type="text" inputmode="numeric" maxlength="6" placeholder="123456" autocomplete="one-time-code"></label>
+      </div>
+      <button class="btn btn--primary btn--block" type="submit" id="loginBtn">コードを送る</button>
+      <p class="hint">パスワードは使いません。メールのコードか、スマホの顔認証・指紋（パスキー）でログインします。<br>デモでは何を入力しても進めます。</p>
+    </form>
+  </div>
+</main>
+
+<!-- ===== アプリ本体 ===== -->
+<div class="app" id="app" hidden>
+  <header class="bar">
+    <div class="bar__title"><b>災害情報 担当者画面</b><span id="who">担当者A（管理者）</span></div>
+    <a class="bar__link" href="emergency.html" target="_blank" rel="noopener">公開ページ<svg class="ico"><use href="#i-external"/></svg></a>
+  </header>
+
+  <!-- ホーム -->
+  <main class="screen" id="tab-home">
+    <section class="card">
+      <h2 class="h">いまの表示</h2>
+      <div class="now" id="nowLevel"></div>
+      <p class="hint">震度と大雪は気象庁の情報を受けて<strong>自動</strong>で切り替わります。ここで選ぶと<strong>手動の設定が優先</strong>されます。</p>
+      <div class="levels" id="levelBtns">
+        <button data-lv="off">通常に戻す</button>
+        <button data-lv="4">震度4<small>お知らせ帯</small></button>
+        <button data-lv="5-">震度5弱<small>状況確認中</small></button>
+        <button data-lv="5+">震度5強以上<small>強い表示</small></button>
+        <button data-lv="snow">大雪<small>お知らせ帯</small></button>
+        <button data-lv="manual" class="is-red">供給停止<small>確定情報</small></button>
+      </div>
+    </section>
+    <section class="quick">
+      <button class="quick__btn" data-go="post"><svg class="ico"><use href="#i-edit"/></svg>お知らせを出す<small>PDF・写真も添付できます</small></button>
+      <button class="quick__btn" data-go="supply"><svg class="ico"><use href="#i-map"/></svg>供給状況を更新<small>地区ごとにボタンで</small></button>
+    </section>
+    <section class="card">
+      <h2 class="h">公開中のお知らせ <span class="count" id="postCount">0</span></h2>
+      <ul class="plist" id="postList"></ul>
+    </section>
+  </main>
+
+  <!-- 投稿 -->
+  <main class="screen" id="tab-post" hidden>
+    <form class="card" id="postForm" novalidate>
+      <h2 class="h">お知らせを出す</h2>
+      <div class="field"><span>定型文から選ぶ</span>
+        <div class="chips" id="tplChips">
+          <button type="button" data-tpl="check">状況確認中</button>
+          <button type="button" data-tpl="meter">メーターの復帰方法</button>
+          <button type="button" data-tpl="work">復旧作業中</button>
+          <button type="button" data-tpl="done">復旧しました</button>
+        </div>
+      </div>
+      <label class="field"><span>タイトル <em>必須</em></span><input type="text" id="pTitle" required maxlength="60"></label>
+      <label class="field"><span>本文</span><textarea id="pBody" rows="5" maxlength="800"></textarea></label>
+      <label class="field"><span>対象の地区</span>
+        <select id="pArea"><option>全域</option><option>東地区</option><option>西地区</option><option>南地区</option><option>北地区</option></select></label>
+
+      <div class="field"><span>添付（PDF・写真）</span>
+        <div class="attach">
+          <label class="attach__btn"><svg class="ico"><use href="#i-camera"/></svg>写真を撮る
+            <input type="file" accept="image/*" capture="environment" id="fCamera" hidden></label>
+          <label class="attach__btn"><svg class="ico"><use href="#i-file"/></svg>ファイルを選ぶ
+            <input type="file" accept="application/pdf,image/jpeg,image/png" multiple id="fPick" hidden></label>
+        </div>
+        <ul class="files" id="fileList"></ul>
+        <p class="hint">PDF・JPEG・PNG、1件20MBまで（実運用の想定）。写真はスマホ側で縮小してから送り、<strong>撮影場所などの位置情報は自動で消します</strong>。</p>
+      </div>
+
+      <div class="warn"><svg class="ico"><use href="#i-alert"/></svg><span>お客さまの氏名・住所など、個人が分かる情報を本文やPDFに入れないでください。</span></div>
+      <button class="btn btn--primary btn--block" type="submit">公開前の確認へ</button>
+    </form>
+  </main>
+
+  <!-- 供給状況 -->
+  <main class="screen" id="tab-supply" hidden>
+    <section class="card">
+      <h2 class="h">供給状況を更新</h2>
+      <p class="hint">地区ごとに状況を選び、「公開する」を押すと公開ページの表に反映されます。</p>
+      <div id="supplyRows"></div>
+      <button class="btn btn--primary btn--block" id="supplySave">公開する</button>
+    </section>
+  </main>
+
+  <!-- 履歴 -->
+  <main class="screen" id="tab-log" hidden>
+    <section class="card">
+      <h2 class="h">操作の履歴</h2>
+      <ul class="log" id="logList"></ul>
+      <button class="btn btn--ghost btn--block" id="resetDemo">デモの内容をすべて消す</button>
+    </section>
+  </main>
+
+  <nav class="tabs" aria-label="画面の切替">
+    <button data-tab="home" class="is-on"><svg class="ico"><use href="#i-home"/></svg>ホーム</button>
+    <button data-tab="post"><svg class="ico"><use href="#i-edit"/></svg>投稿</button>
+    <button data-tab="supply"><svg class="ico"><use href="#i-map"/></svg>供給状況</button>
+    <button data-tab="log"><svg class="ico"><use href="#i-clock"/></svg>履歴</button>
+  </nav>
+</div>
+
+<!-- 公開前の確認 -->
+<div class="sheet" id="confirm" hidden>
+  <div class="sheet__panel" role="dialog" aria-modal="true" aria-labelledby="cfTitle">
+    <div class="sheet__head"><b id="cfTitle">公開前の確認</b><button class="sheet__close" id="cfClose" aria-label="閉じる"><svg class="ico"><use href="#i-x"/></svg></button></div>
+    <p class="hint">お客さまには、次のように表示されます。</p>
+    <div class="pv" id="cfPreview"></div>
+    <div class="sheet__actions">
+      <button class="btn btn--ghost" id="cfBack">直す</button>
+      <button class="btn btn--primary" id="cfPublish">公開する</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script src="assets/admin.js"></script>
+</body>
+</html>
